@@ -8,18 +8,18 @@ import { Card } from '@/components/ui/card';
 const services = [
   {
     icon: <Building2 className="h-12 w-12 text-blue-500 mb-4" />,
-    title: "Commercial Construction",
-    description: "State-of-the-art commercial buildings and offices.",
+    title: "Ndërtimi Komercial",
+    description: "Ndërtesa komerciale dhe zyra moderne.",
   },
   {
     icon: <Wrench className="h-12 w-12 text-green-500 mb-4" />,
-    title: "Renovation",
-    description: "Modern renovations for existing structures.",
+    title: "Shërbime Inxhinierike ",
+    description: "Mbështetje inxhinierike dhe menaxhim projektesh nga ekspertë të ndërtimit.",
   },
   {
     icon: <Users className="h-12 w-12 text-orange-500 mb-4" />,
     title: "Project Management",
-    description: "Expert project management and consultation.",
+    description: "Menaxhimi dhe konsultimi i ekspertëve të projektit.",
   },
 ];
 
@@ -36,7 +36,7 @@ const Services = () => {
       >
         <h2 className="text-3xl font-bold mb-4">Our Services</h2>
         <p className="text-muted-foreground max-w-2xl mx-auto">
-          Comprehensive construction solutions tailored to your needs.
+        Zgjidhje gjithëpërfshirëse ndërtimi të përshtatura për nevojat tuaja.
         </p>
       </motion.div>
 

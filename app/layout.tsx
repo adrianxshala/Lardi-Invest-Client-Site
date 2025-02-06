@@ -1,14 +1,15 @@
+
 import './globals.css';
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Oxanium } from 'next/font/google';
 import { ThemeProvider } from '@/components/theme-provider';
 import Navbar from '@/components/navbar';
 import Footer from '@/components/footer';
 
-const inter = Inter({ subsets: ['latin'] });
 
+const oxanium = Oxanium({ subsets: ['latin'] });
 export const metadata: Metadata = {
-  title: 'FutureBuilt Construction',
+  title: 'Lardi Invest',
   description: 'Building tomorrow, today',
 };
 
@@ -19,7 +20,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.className} dark`}>
+      <body className={`${oxanium.className} dark`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"

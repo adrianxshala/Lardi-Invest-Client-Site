@@ -9,6 +9,12 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        inter: ['Inter', 'sans-serif'],
+        lexend: ['Lexend', 'sans-serif'],
+        orbitron:['Orbitron', 'sans-serif'],
+        oxanium: ['Oxanium','sans-serif'] // Added Lexend Font
+      },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':

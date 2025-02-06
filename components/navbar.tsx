@@ -4,9 +4,10 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Building2, Menu, X } from "lucide-react";
-import logo from "../app/assets/llogo.png";
+import { Menu, X } from "lucide-react";
+import logo from "../public/assets/llogo.png";
 import Image from "next/image";
+
 const navItems = [
   { path: "/#home", label: "Home" },
   { path: "/#services", label: "Services" },
@@ -42,20 +43,18 @@ export default function Navbar() {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
-             {/* Logo */}
-      <div className="flex items-center relative w-40 h-16">
-        <Link href="/">
-          {/* You can keep the div or remove it, but wrapping the Image in Link is key */}
-          <Image
-            src={logo}
-            alt="Company Logo"
-            layout="intrinsic" // If you prefer next/image 12.x or older
-            width={160}
-            height={64}
-            style={{ objectFit: "contain", cursor: "pointer" }}
-          />
-        </Link>
-      </div>
+            {/* Logo */}
+            <div className="flex items-center relative w-40 h-16">
+              <Link href="/">
+                <Image
+                  src={logo}
+                  alt="Company Logo"
+                  width={160}
+                  height={64}
+                  style={{ objectFit: "contain", cursor: "pointer" }}
+                />
+              </Link>
+            </div>
 
             {/* Desktop Menu */}
             <div className="hidden md:flex space-x-8">
@@ -99,7 +98,7 @@ export default function Navbar() {
             initial={{ x: "100%" }}
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
-            transition={{ duration: 0.3 }}
+            transition={{ duration: 0.6 }}
             className="fixed inset-y-0 right-0 w-64 bg-background/50 backdrop-blur-lg shadow-lg z-50 flex flex-col p-6"
           >
             {/* Close Button */}
@@ -126,6 +125,11 @@ export default function Navbar() {
                   {item.label}
                 </a>
               ))}
+              <a href="tel:+38349264779">
+                <button className="bg-black hover:bg-blue-600 text-white px-4 py-2 rounded-md transition-colors">
+                  Contact Us
+                </button>
+              </a>
             </nav>
           </motion.div>
         )}

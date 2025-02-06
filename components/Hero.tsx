@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 
 const Hero = () => {
@@ -28,7 +29,7 @@ const Hero = () => {
         
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.1 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
           className="text-4xl sm:text-6xl font-bold text-blue-500  mb-4"
         >
           We are Lardi Invest
@@ -37,31 +38,33 @@ const Hero = () => {
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 0.3 }}
+          transition={{ duration: 0.7, delay: 0.5 }}
           className="text-xl sm:text-2xl text-muted-foreground mb-8"
         >
-          Innovative construction solutions for tomorrow's world
+        Zgjidhje inovative ndërtimi për botën e së nesërmes
         </motion.p>
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.5 }}
-          className="flex flex-col sm:flex-row gap-4 justify-center"
-        >
-          <Button
-            asChild
-            className="bg-blue-500 hover:bg-blue-600 w-[50%] md:w-[30%] ml-[25%] md:ml-[1%] "
-          >
-            <a href="/projectss">
-              Our Projects
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </a>
-          </Button>
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.9, delay: 0.7 }}
+  className="flex flex-col sm:flex-row gap-4 justify-center"
+>
+  <Button
+    asChild
+    className="bg-blue-500 hover:bg-blue-600 w-[50%] md:w-[30%] ml-[25%] md:ml-[1%]"
+  >
+    <Link href="/projectss">
+      Our Projects
+      <ArrowRight className="ml-2 h-4 w-4" />
+    </Link>
+  </Button>
 
-          <Button size="lg" variant="outline" className="hidden md:block">
-            Contact Us
-          </Button>
-        </motion.div>
+  <a href="tel:+38349264779">
+  <Button size="lg" variant="outline" className="hidden md:block">
+    Contact Us
+  </Button>
+</a>
+</motion.div>
       </div>
     </section>
   );
