@@ -22,8 +22,6 @@ const Contact = () => {
     setMounted(true);
   }, []);
 
-  // Instead of returning early (which would skip hooks),
-  // conditionally render your UI in the JSX.
   return (
     <>
       {mounted ? (
