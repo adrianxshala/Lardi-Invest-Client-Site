@@ -1,12 +1,16 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import Image from "next/image";
 import image1 from "../public/assets/projects/about about.jpg";
 import CountUp from "react-countup";
 
 const About = () => {
+  // Use the useInView hook to detect when the stats section is in view
+  const statsRef = React.useRef(null);
+  const statsInView = useInView(statsRef, { once: true });
+
   return (
     <section
       id="about"
@@ -38,7 +42,7 @@ const About = () => {
       {/* About Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         {/* Stats & Vision/Mission */}
-        <div className="space-y-8">
+        <div className="space-y-8" ref={statsRef}>
           {/* Stats Grid */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
@@ -77,8 +81,11 @@ const About = () => {
                 <div
                   className={`text-4xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r ${item.color}`}
                 >
-                  <CountUp start={0} end={item.count} duration={2} />
-                  {item.suffix && item.suffix}
+                  {statsInView ? (
+                    <CountUp start={0} end={item.count} duration={8} suffix={item.suffix} />
+                  ) : (
+                    0
+                  )}
                 </div>
                 <p className="text-muted-foreground">{item.text}</p>
               </div>
