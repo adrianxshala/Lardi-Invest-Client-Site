@@ -1,17 +1,17 @@
 "use client";
 
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useRef } from "react";
+import { motion, useInView } from "framer-motion";
 import Image from "next/image";
 import image1 from "../public/assets/projects/about about.jpg";
 import CountUp from "react-countup";
 
 const About = () => {
+  const statsRef = useRef(null);
+  const isInView = useInView(statsRef, { triggerOnce: true, margin: "-100px" });
+
   return (
-    <section
-      id="about"
-      className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto"
-    >
+    <section id="about" className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
       {/* Section Title */}
       <div className="text-center mb-16">
         <motion.h2
@@ -41,43 +41,21 @@ const About = () => {
         <div className="space-y-8">
           {/* Stats Grid */}
           <motion.div
+            ref={statsRef}
             initial={{ opacity: 0, x: -40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 1, delay: 0.7 }}
             className="grid grid-cols-2 gap-6"
           >
             {[
-              {
-                count: 20,
-                text: "Vite përvojë",
-                color: "from-blue-400 to-blue-600",
-              },
-              {
-                count: 50,
-                text: "Ekipi i ekspertëve",
-                color: "from-green-400 to-green-600",
-              },
-              {
-                count: 5,
-                text: "Qytetet e shërbyera",
-                color: "from-purple-400 to-purple-600",
-              },
-              {
-                count: 98,
-                text: "Kënaqësia e klientit",
-                color: "from-orange-400 to-orange-600",
-                suffix: "%",
-              },
+              { count: 20, text: "Vite përvojë", color: "from-blue-400 to-blue-600" },
+              { count: 50, text: "Ekipi i ekspertëve", color: "from-green-400 to-green-600" },
+              { count: 5, text: "Qytetet e shërbyera", color: "from-purple-400 to-purple-600" },
+              { count: 98, text: "Kënaqësia e klientit", color: "from-orange-400 to-orange-600", suffix: "%" },
             ].map((item, index) => (
-              <div
-                key={index}
-                className="text-center p-6 backdrop-blur-lg bg-background/50 rounded-lg border border-border"
-              >
-                <div
-                  className={`text-4xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r ${item.color}`}
-                >
-                  <CountUp start={0} end={item.count} duration={2} />
+              <div key={index} className="text-center p-6 backdrop-blur-lg bg-background/50 rounded-lg border border-border">
+                <div className={`text-4xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r ${item.color}`}>
+                  {isInView ? <CountUp start={0} end={item.count} duration={5} /> : 0}
                   {item.suffix && item.suffix}
                 </div>
                 <p className="text-muted-foreground">{item.text}</p>
@@ -153,8 +131,7 @@ const About = () => {
           <div
             className="absolute inset-0"
             style={{
-              background:
-                "radial-gradient(circle, transparent 20%, rgba(0, 0, 0, 0.9) 90%)",
+              background: "radial-gradient(circle, transparent 20%, rgba(0, 0, 0, 0.9) 90%)",
             }}
           />
         </motion.div>

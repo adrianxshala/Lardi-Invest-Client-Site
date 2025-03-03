@@ -9,7 +9,6 @@ import { Button } from "@/components/ui/button";
 import Swal from "sweetalert2";
 
 const Contact = () => {
-  // All hooks are declared at the top of the component
   const [mounted, setMounted] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
@@ -22,18 +21,38 @@ const Contact = () => {
     setMounted(true);
   }, []);
 
-  // Instead of returning early (which would skip hooks),
-  // conditionally render your UI in the JSX.
   return (
     <>
       {mounted ? (
         <motion.div
-          initial={{ opacity: 0, x: 20 }}
+          initial={{ opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7, ease: "easeOut", delay: 0.4 }}
           className="w-[90%] sm:w-[90%] md:w-1/3 mx-auto"
         >
+          {/* Title & Subtitle */}
+          <div className="text-center mb-8">
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="text-3xl font-bold"
+            >
+              Contact Us
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, delay: 0.4 }}
+              className="text-muted-foreground mt-2"
+            >
+              Have any questions? Feel free to reach out!
+            </motion.p>
+          </div>
+
           <motion.form
             onSubmit={async (e) => {
               e.preventDefault();
@@ -45,14 +64,17 @@ const Contact = () => {
               };
 
               try {
-                const response = await fetch("https://api.web3forms.com/submit", {
-                  method: "POST",
-                  headers: {
-                    "Content-Type": "application/json",
-                    Accept: "application/json",
-                  },
-                  body: JSON.stringify(submissionData),
-                });
+                const response = await fetch(
+                  "https://api.web3forms.com/submit",
+                  {
+                    method: "POST",
+                    headers: {
+                      "Content-Type": "application/json",
+                      Accept: "application/json",
+                    },
+                    body: JSON.stringify(submissionData),
+                  }
+                );
 
                 const result = await response.json();
 
@@ -99,7 +121,10 @@ const Contact = () => {
           >
             {/* Name Input */}
             <motion.div
-              variants={{ hidden: { opacity: 0, y: 10 }, visible: { opacity: 1, y: 0 } }}
+              variants={{
+                hidden: { opacity: 0, y: 10 },
+                visible: { opacity: 1, y: 0 },
+              }}
               className="space-y-2"
             >
               <Label htmlFor="name">Name</Label>
@@ -117,7 +142,10 @@ const Contact = () => {
 
             {/* Email Input */}
             <motion.div
-              variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0 } }}
+              variants={{
+                hidden: { opacity: 0, y: 30 },
+                visible: { opacity: 1, y: 0 },
+              }}
               className="space-y-2"
             >
               <Label htmlFor="email">Email</Label>
@@ -136,7 +164,10 @@ const Contact = () => {
 
             {/* Message Textarea */}
             <motion.div
-              variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0 } }}
+              variants={{
+                hidden: { opacity: 0, y: 30 },
+                visible: { opacity: 1, y: 0 },
+              }}
               className="space-y-2"
             >
               <Label htmlFor="message">Message</Label>
@@ -154,7 +185,10 @@ const Contact = () => {
 
             {/* Submit Button */}
             <motion.div
-              variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0 } }}
+              variants={{
+                hidden: { opacity: 0, y: 30 },
+                visible: { opacity: 1, y: 0 },
+              }}
             >
               <Button
                 type="submit"
