@@ -30,7 +30,7 @@ const Services = () => {
       id="services"
       className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto"
     >
-      {/* Section Title */}
+      
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}

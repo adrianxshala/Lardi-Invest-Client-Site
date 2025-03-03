@@ -11,6 +11,9 @@ const oxanium = Oxanium({ subsets: ['latin'] });
 export const metadata: Metadata = {
   title: 'Lardi Invest',
   description: 'Building tomorrow, today',
+  icons: {
+    icon: '/favicon.png', // Path to your favicon in the public directory
+  },
 };
 
 export default function RootLayout({
